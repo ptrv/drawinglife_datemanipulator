@@ -201,6 +201,46 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<Filter
+			Name="sqlite3x"
+			>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3.c"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3.h"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3ext.h"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x_command.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x_connection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x_exception.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x_reader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libs\sqlite3x\sqlite3x_transaction.cpp"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
