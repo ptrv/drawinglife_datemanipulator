@@ -5,10 +5,10 @@
 		<Option title="DateManipulator" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="sources/;headers/;" />
+		<Option virtualFolders="sources/;headers/;sqlite3x/;" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../libs/DateManipulator" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/DateManipulatorD" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -17,7 +17,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="../libs/DateManipulator" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/DateManipulator" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -32,12 +32,50 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Linker>
+			<Add library="pthread" />
+			<Add library="dl" />
+		</Linker>
+		<Unit filename="libs/sqlite3x/sqlite3.c">
+			<Option compilerVar="CC" />
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3.h">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3ext.h">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x.hpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x_command.cpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x_connection.cpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x_exception.cpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x_reader.cpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="libs/sqlite3x/sqlite3x_transaction.cpp">
+			<Option virtualFolder="sqlite3x/" />
+		</Unit>
 		<Unit filename="src/DateManipulator.cpp">
 			<Option virtualFolder="sources/" />
 		</Unit>
-		<Unit filename="src/DateManipulator.h" />
-		<Unit filename="src/GpsPoint.h" />
-		<Unit filename="src/Main.cpp" />
+		<Unit filename="src/DateManipulator.h">
+			<Option virtualFolder="headers/" />
+		</Unit>
+		<Unit filename="src/GpsPoint.h">
+			<Option virtualFolder="headers/" />
+		</Unit>
+		<Unit filename="src/Main.cpp">
+			<Option virtualFolder="sources/" />
+		</Unit>
 		<Extensions>
 			<envvars />
 			<code_completion />
