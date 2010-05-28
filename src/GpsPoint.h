@@ -16,7 +16,7 @@ class GpsPoint
 	double m_longitude;
 	double m_elevation;
 	std::string m_timestamp;
-	std::string m_location;
+//	std::string m_location;
 
 public:
 	GpsPoint()
@@ -25,34 +25,40 @@ public:
 	m_latitude(0.0),
 	m_longitude(0.0),
 	m_elevation(0.0),
-	m_timestamp(""),
-	m_location("")
+	m_timestamp("")//,
+//	m_location("")
 	{};
 
 	~GpsPoint(){};
 
     /**
     * \brief Set values for a GpsPoint.
+    * \param gpsPointId
     * \param latitude
     * \param longitude
     * \param elevation
     * \param timestamp
-    * \param location
     */
-	void setGpsPoint(double latitude,
+	void setGpsPoint(int gpsPointId,
+                     double latitude,
 					 double longitude,
 					 double elevation,
-					 const std::string& timestamp,
-					 const std::string& location)
+					 const std::string& timestamp)//,
+//					 const std::string& location)
 	{
-		++m_gpsPointId;
+		m_gpsPointId = gpsPointId;
 		m_latitude = latitude;
 		m_longitude = longitude;
 		m_elevation = elevation;
 		m_timestamp = timestamp;
-		m_location = location;
+//		m_location = location;
 	}
 	//---------------------------------------------------------------------------
+	/**
+	* \brief Get id of gps point.
+	* \return gpsPointId int value.
+	*/
+	int getGpsPointId() const { return m_gpsPointId; }
 	/**
 	* \brief Get latitude.
 	* \return latitude double value.
@@ -69,11 +75,11 @@ public:
 	*/
 	double getElevation() const { return m_elevation; }
 	//---------------------------------------------------------------------------
-    /**
-	* \brief Get location for GpsPoint.
-	* \return Location string.
-	*/
-	const std::string& getLocation() const { return m_location; }
+//    /**
+//	* \brief Get location for GpsPoint.
+//	* \return Location string.
+//	*/
+//	const std::string& getLocation() const { return m_location; }
 	//---------------------------------------------------------------------------
     /**
 	* \brief Get time stamp for GpsPoint.
@@ -97,7 +103,7 @@ public:
 		m_longitude = 0;
 		m_elevation = 0;
 		m_timestamp = "";
-		m_location = "";
+//		m_location = "";
 	}
 };
 

@@ -17,6 +17,7 @@ int main(int argc, char** argv)
 {
 	// TODO Würde ich vermutlich per 'argv' übergeben!?								<--
 	// Reference values must be set from anywhere.
+	int gpsPointId = 0;
 	double latitude = 0.0;
 	double longitude = 0.0;
 	std::string timestamp = "2010-02-09T10:39:05Z";
@@ -30,7 +31,7 @@ int main(int argc, char** argv)
 
 	// Refernce GpsPoint.
 	GpsPoint reference;
-	reference.setGpsPoint(latitude, longitude, 0.0, timestamp, "unused");
+	reference.setGpsPoint(gpsPointId, latitude, longitude, 0.0, timestamp);
 
 	// Read a set of gps points for a specific person and manipulate
 	// all its timestamps according the given reference gps point.

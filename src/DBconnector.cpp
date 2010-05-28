@@ -31,3 +31,71 @@ DBconnector::~DBconnector()
 {
     //dtor
 }
+
+
+bool DBconnector::getGpsPoints(vector<GpsPoint>& gpsPoints, string username)
+{
+    bool result = false;
+    string query = "SELECT a.gpsdataid AS gpsdataid, a.latitude AS latitude, \
+                    a.longitude AS longitude, a.time AS time, \
+                    a.elevation AS elevation, b.name AS name \
+                    FROM gpsdata AS a \
+                    JOIN user AS b ON (a.user = b.userid) \
+                    WHERE name = '";
+    query += username;
+    query += "';";
+
+    try
+    {
+        sqlite3_connection con(m_databasePath.c_str());
+
+        sqlite3_command cmd(con, query.c_str());
+		sqlite3_reader reader=cmd.executereader();
+
+		while(reader.read())
+		{
+            GpsPoint gpsPoint;
+
+            gpsPoint.setGpsPoint(reader.getint(0),
+                                 reader.getdouble(1),
+                                 reader.getdouble(2),
+                                 reader.getdouble(4),
+                                 reader.getstring(3));
+
+            gpsPoints.push_back(gpsPoint);
+		}
+        con.close();
+        result = true;
+    }
+    CATCHDBERRORS
+    return result;
+}
+
+bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint> gpsPoints)
+{
+    bool result = false;
+    try
+    {
+        sqlite3_connection con(m_databasePath.c_str());
+
+        sqlite3_transaction trans(con);
+        {
+            for(unsigned int i = 0; i < gpsPoints.size(); ++i)
+            {
+                string query = "UPDATE gpsdata \
+                                SET time = '";
+                query += gpsPoints[i].getTimestamp();
+                query += "' WHERE gpsdataid = '";
+                query += gpsPoints[i].getGpsPointId();
+                query += "';";
+                sqlite3_command cmd(con, query.c_str());
+                cmd.executenonquery();
+            }
+        }
+        trans.commit();
+        con.close();
+        result = true;
+    }
+    CATCHDBERRORS
+    return result;
+}

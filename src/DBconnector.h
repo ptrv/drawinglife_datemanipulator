@@ -6,6 +6,8 @@
 #define _DBCONNECTOR_H_
 
 #include <string>
+#include <vector>
+#include "GpsPoint.h"
 
 using namespace std;
 
@@ -15,9 +17,9 @@ public:
     DBconnector(const string& databasePath);
     ~DBconnector();
 
-    void setupDatabaseConnection();
+    bool getGpsPoints(vector<GpsPoint>& gpsPoints, string username);
+    bool setGpsPointsTimestamp(vector<GpsPoint> gpsPoints);
 
-    void closeDatabaseConnection();
 private:
 
     string m_databasePath;
