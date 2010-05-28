@@ -31,6 +31,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="libs/sqlite3x" />
 		</Compiler>
 		<Linker>
 			<Add library="pthread" />
@@ -63,6 +64,12 @@
 		</Unit>
 		<Unit filename="libs/sqlite3x/sqlite3x_transaction.cpp">
 			<Option virtualFolder="sqlite3x/" />
+		</Unit>
+		<Unit filename="src/DBconnector.cpp">
+			<Option virtualFolder="sources/" />
+		</Unit>
+		<Unit filename="src/DBconnector.h">
+			<Option virtualFolder="headers/" />
 		</Unit>
 		<Unit filename="src/DateManipulator.cpp">
 			<Option virtualFolder="sources/" />

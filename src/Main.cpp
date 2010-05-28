@@ -1,10 +1,14 @@
+/*==========================================================
+ Copyright (c) avp::ptr, 2010
+ ==========================================================*/
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include "GpsPoint.h"
 #include "DateManipulator.h"
 
-/*
+/**
  *
  *
  *
@@ -28,7 +32,7 @@ int main(int argc, char** argv)
 	GpsPoint reference;
 	reference.setGpsPoint(latitude, longitude, 0.0, timestamp, "unused");
 
-	// Read a set of gps points for a specific person and manipulate 
+	// Read a set of gps points for a specific person and manipulate
 	// all its timestamps according the given reference gps point.
 	// TODO Je nach Aufwand könnte man pro Person einen Thread starten!?			<--
 	for (unsigned int i = 0; i < names.size(); i++)
@@ -36,7 +40,7 @@ int main(int argc, char** argv)
 		// Get set of GPS points for that specific person.
 		// ... std::vector<GpsPoint> points = ...
 
-		// 
+		//
 		DateManipulator dm;
 		//dm.manipulate(refernce, points);
 	}

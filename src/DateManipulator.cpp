@@ -1,3 +1,7 @@
+/*==========================================================
+ Copyright (c) avp::ptr, 2010
+ ==========================================================*/
+
 #include "DateManipulator.h"
 
 void DateManipulator::manipulate(const GpsPoint& reference, std::vector<GpsPoint>& points)
@@ -5,7 +9,7 @@ void DateManipulator::manipulate(const GpsPoint& reference, std::vector<GpsPoint
 	std::vector<GpsPoint>::iterator closestPoint = getClosestPoint(reference, points);
 }
 
-std::vector<GpsPoint>::iterator DateManipulator::getClosestPoint(const GpsPoint& reference, 
+std::vector<GpsPoint>::iterator DateManipulator::getClosestPoint(const GpsPoint& reference,
 		std::vector<GpsPoint>& points)
 {
 	return points.begin();
