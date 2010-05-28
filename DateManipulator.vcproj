@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="bin"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			>
@@ -60,6 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				OutputFile="bin\DateManipulatorD.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -89,8 +90,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="bin"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -132,6 +133,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				OutputFile="bin\DateManipulator.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -171,11 +173,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\DateManipulator.cpp"
+				RelativePath=".\src\DateManipulator.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Main.cpp"
+				RelativePath=".\src\Main.cpp"
 				>
 			</File>
 		</Filter>
@@ -185,11 +187,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\DateManipulator.h"
+				RelativePath=".\src\DateManipulator.h"
 				>
 			</File>
 			<File
-				RelativePath=".\GpsPoint.h"
+				RelativePath=".\src\GpsPoint.h"
 				>
 			</File>
 		</Filter>

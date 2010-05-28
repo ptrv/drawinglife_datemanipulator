@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DateManipulator", "DateManipulator\DateManipulator.vcproj", "{D323A853-E9EF-4E7F-84D1-3D4C21DCECDA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DateManipulator", "DateManipulator.vcproj", "{D323A853-E9EF-4E7F-84D1-3D4C21DCECDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
