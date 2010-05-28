@@ -7,3 +7,7 @@ doc/html/*
 *.depend
 *.layout
 *.o
+Debug/*
+Release/*
+DateManipulator/Debug/*
+DateManipulator/Release/*
