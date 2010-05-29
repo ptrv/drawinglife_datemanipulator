@@ -8,11 +8,24 @@
 #include "GpsPoint.h"
 #include "DateManipulator.h"
 
+/* 
+Alright, here are some things we should check if errors occur.  ;)
+
+1. I'm not really careful by converting a date-string into single integers. 
+I just assume that the string looks always the same... but that might not 
+be the case.
+
+
+
+
+*/
+
+
 /**
  *
  *
  *
- */
+ *
 int main(int argc, char** argv)
 {
 	// TODO Würde ich vermutlich per 'argv' übergeben!?								<--
@@ -48,3 +61,4 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+ */

@@ -107,5 +107,14 @@ public:
 	}
 };
 
+inline std::ostream& operator<<(std::ostream& os, const GpsPoint& p)
+{
+	os << "id: " << p.getGpsPointId() << ", ";
+	os << "lat: " << p.getLatitude() << ", ";
+	os << "lon: " << p.getLongitude() << ", ";
+	os << "time: " << p.getTimestamp();
+	return os;
+}
+
 
 #endif // _GPSPOINT_H_
