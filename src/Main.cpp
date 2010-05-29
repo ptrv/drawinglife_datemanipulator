@@ -9,14 +9,18 @@
 #include "DateManipulator.h"
 
 /* 
+
 Alright, here are some things we should check if errors occur.  ;)
 
 1. I'm not really careful by converting a date-string into single integers. 
-I just assume that the string looks always the same... but that might not 
-be the case.
+I just assume that the date-string looks always the same... but that might 
+not be the case.
 
-
-
+2. Maybe, we could have a timezone issue, by converting the timestamps 
+into the unix time. But, if the reference gpspoint is within the same 
+timezone, it should work.
+The reason I use the unix time anyway is, that it makes time calculations 
+easier if you don't have to handle a 'normal' time format.
 
 */
 
@@ -62,3 +66,4 @@ int main(int argc, char** argv)
 	return 0;
 }
  */
+

@@ -10,22 +10,20 @@
 #include <string>
 #include "GpsPoint.h"
 
-struct DateTokens
-{
-	int year;
-	int month;
-	int day;
-	int hour;
-	int minute;
-	int second;
-};
 
+/*
+ * \brief A timestamp manipulator.
+ */
 class DateManipulator
 {
 public:
 
 	/**
+	 * \brief Manipulate GpsPoints according to the given reference GpsPoint.
 	 *
+	 * Find the closest point to the reference and take it as initial point 
+	 * to manipulate all the others, so that their timestamps correspond to 
+	 * the timestamp of the reference point.
 	 */
 	void manipulate(const GpsPoint& reference, std::vector<GpsPoint>& points);
 
@@ -38,14 +36,12 @@ private:
 		std::vector<GpsPoint>& points);
 
 	/**
-	 *
+	 * \brief Set timestamp of all points.
 	 */
 	void setTimestamps(const GpsPoint& reference,
 		std::vector<GpsPoint>::iterator begin,
 		std::vector<GpsPoint>::iterator end,
 		std::vector<GpsPoint>::iterator point);
-
-public:
 
 	/**
 	 * \brief Convert internal timestamp to unix time.

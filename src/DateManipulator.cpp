@@ -17,6 +17,7 @@ void DateManipulator::manipulate(const GpsPoint& reference, std::vector<GpsPoint
 std::vector<GpsPoint>::iterator DateManipulator::getClosestPoint(const GpsPoint& reference,
 		std::vector<GpsPoint>& points)
 {
+	// reference values
 	double rLat = reference.getLatitude();
 	double rLon = reference.getLongitude();
 	double dist = std::numeric_limits<double>::max();
@@ -103,8 +104,9 @@ time_t DateManipulator::getUnixTime(const std::string& d)
 
 std::string DateManipulator::getTimestamp(const time_t& uTime)
 {	
+	// Convert from unix time to a readable format.
 	tm* time = gmtime(&uTime);	
-	
+
 	std::stringstream date;
 	// Year
 	date << (time->tm_year + 1900);
@@ -137,6 +139,7 @@ std::string DateManipulator::getTimestamp(const time_t& uTime)
 //	Unit testing
 // -----------------------------------------------------------------------------
 
+
 int main(int argc, char** argv)
 {
 	// Create reference point.
@@ -164,7 +167,7 @@ int main(int argc, char** argv)
 		std::cout << points.at(i) << std::endl;
 	}
 	
-	// Manipulate all time stamps.
+	// Manipulate all their time stamps.
 	std::cout << "" << std::endl;
 	std::cout << "Find closest GpsPoint to that reference GpsPoint" << std::endl;
 	std::cout << leipzig << std::endl;
@@ -173,7 +176,7 @@ int main(int argc, char** argv)
 	DateManipulator dm;
 	dm.manipulate(leipzig, points);
 
-	// Print all points.
+	// Print all points again.
 	std::cout << "Manipulate all GpsPoint in the way that they match to the refrence." << std::endl;
 	for (unsigned int i = 0; i < points.size(); i++)
 	{
@@ -182,3 +185,4 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+
