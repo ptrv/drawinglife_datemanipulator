@@ -5,6 +5,7 @@
 #include "DBconnector.h"
 
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <stdexcept>
 using namespace std;
@@ -82,11 +83,14 @@ bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint>& gpsPoints)
         {
             for(unsigned int i = 0; i < gpsPoints.size(); ++i)
             {
+				stringstream ss;
+				ss << gpsPoints[i].getGpsPointId();
+
                 string query = "UPDATE gpsdata \
                                 SET time = '";
                 query += gpsPoints[i].getTimestamp();
                 query += "' WHERE gpsdataid = '";
-                query += gpsPoints[i].getGpsPointId();
+				query += ss.str();
                 query += "';";
                 sqlite3_command cmd(con, query.c_str());
                 cmd.executenonquery();

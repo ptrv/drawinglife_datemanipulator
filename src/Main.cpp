@@ -119,7 +119,7 @@ int main(int argc, char** argv)
 		// Statistics
 		std::cout << "" << std::endl;
 		std::cout << "Username: " << names.at(i) << std::endl;
-		std::cout << "   Reading from database ... ";
+		std::cout << "> Reading from database ... ";
 
 		// Get set of GPS points for that specific person.
 		std::vector<GpsPoint> points;
@@ -129,7 +129,7 @@ int main(int argc, char** argv)
 		// Some more statistics.
 		std::cout << "[done]" << std::endl;
 		std::cout << "GPS points: " << points.size() << std::endl;
-		std::cout << "   Manipulating timestamps ... ";
+		std::cout << "> Manipulating timestamps ... ";
 
 		// Manipuate all timestamps.
 		DateManipulator dm;
@@ -140,7 +140,7 @@ int main(int argc, char** argv)
 		std::cout << "Closest point: " << dm.getClosestGpsPoint() << std::endl;
 
 		// Write back into db.		
-		std::cout << "   Writing back into database ... ";
+		std::cout << "> Writing back into database ... ";
 		dbConnector.setGpsPointsTimestamp(points);
 		std::cout << "[done]" << std::endl;
 	}
