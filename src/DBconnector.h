@@ -18,7 +18,7 @@ public:
     ~DBconnector();
 
     bool getGpsPoints(vector<GpsPoint>& gpsPoints, string username);
-    bool setGpsPointsTimestamp(vector<GpsPoint> gpsPoints);
+    bool setGpsPointsTimestamp(vector<GpsPoint>& gpsPoints);
 
 private:
 

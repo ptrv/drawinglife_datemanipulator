@@ -71,7 +71,7 @@ bool DBconnector::getGpsPoints(vector<GpsPoint>& gpsPoints, string username)
     return result;
 }
 
-bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint> gpsPoints)
+bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint>& gpsPoints)
 {
     bool result = false;
     try

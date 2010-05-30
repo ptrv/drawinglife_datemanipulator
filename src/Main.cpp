@@ -49,6 +49,18 @@ void printUsage(std::string& exe)
  */
 int main(int argc, char** argv)
 {
+	// Predefine all informations.
+	std::string dbName = "db.sqlite";							// database name
+	double refLatitude = 52.5018387;							// reference latitude
+	double refLongitude = 13.4338551;							// reference longitude
+	std::string refTimestamp = "1989-11-20T17:15:25Z";			// reference timestamp
+	std::vector<std::string> names;								// 0..N names to change 
+
+	// -------------------------------------------------------------
+	// Comment it out here, if you don't want to use runtime args.
+	// But, take care that you set up the names-vector by yourself.
+	//
+
 	// Get runtime informations.
 	std::string executable(argv[0]);
 	int i = executable.find_last_of('/');
@@ -72,13 +84,6 @@ int main(int argc, char** argv)
 		printUsage(exName);
 		return 1;
 	}
-	
-	// Predefine all informations.
-	std::string dbName = "db.sqlite";							// database name
-	double refLatitude = 52.5018387;							// reference latitude
-	double refLongitude = 13.4338551;							// reference longitude
-	std::string refTimestamp = "1989-11-20T17:15:25Z";			// reference timestamp
-	std::vector<std::string> names;								// 0..N names to change 
 
 	// Read database name from command line.
 	if (argc >= 2) dbName = argv[1];
@@ -97,6 +102,8 @@ int main(int argc, char** argv)
 	{
 		names.push_back(argv[i]);
 	}
+
+	// -------------------------------------------------------------
 
 	// Create refernce GpsPoint.
 	GpsPoint refGpsPoint;
@@ -131,6 +138,11 @@ int main(int argc, char** argv)
 		// Some more statistics.
 		std::cout << "[done]" << std::endl;
 		std::cout << "Closest point: " << dm.getClosestGpsPoint() << std::endl;
+
+		// Write back into db.		
+		std::cout << "   Writing back into database ... ";
+		dbConnector.setGpsPointsTimestamp(points);
+		std::cout << "[done]" << std::endl;
 	}
 
 	// Bye.
