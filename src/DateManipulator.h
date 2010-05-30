@@ -27,7 +27,15 @@ public:
 	 */
 	void manipulate(const GpsPoint& reference, std::vector<GpsPoint>& points);
 
+	/**
+	 * \brief Retrieves the closest gps point afterwards.
+	 */
+	GpsPoint getClosestGpsPoint();
+
 private:
+
+	// \brief Remember closest point of last search.
+	GpsPoint cp;
 
 	/**
 	 * \brief Get closest point to the reference gps-point.

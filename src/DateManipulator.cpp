@@ -10,8 +10,22 @@
 
 void DateManipulator::manipulate(const GpsPoint& reference, std::vector<GpsPoint>& points)
 {
+	// Reset the former closest point.
+	cp.setGpsPoint(0, 0.0, 0.0, 0.0, "0000-00-00T00:00:00Z");
+	// Return if there is nothing to do.
+	if (points.size() == 0) return;
+
+	// Get closest point to reference.
 	std::vector<GpsPoint>::iterator point = getClosestPoint(reference, points);
+	// Remeber that point before manipulating its timestamp.
+	cp = *point;
+	// Manipulate all timestamps so that they match to the given reference.
 	this->setTimestamps(reference, points.begin(), points.end(), point);
+}
+
+GpsPoint DateManipulator::getClosestGpsPoint()
+{
+	return cp;
 }
 
 std::vector<GpsPoint>::iterator DateManipulator::getClosestPoint(const GpsPoint& reference,
@@ -82,8 +96,6 @@ time_t DateManipulator::getUnixTime(const std::string& d)
 	// Split given date.
 	std::string date = d.substr(0, d.find('T'));
 	std::string time = d.substr(d.find('T') + 1, 8);
-	// Return value.
-	DateTokens dt;
 	// Split date.
 	std::stringstream(date.substr(0,  4)) >> year;		// 2010
 	std::stringstream(date.substr(5,  7)) >> month;		// 02
@@ -139,7 +151,7 @@ std::string DateManipulator::getTimestamp(const time_t& uTime)
 //	Unit testing
 // -----------------------------------------------------------------------------
 
-
+/*
 int main(int argc, char** argv)
 {
 	// Create reference point.
@@ -185,4 +197,4 @@ int main(int argc, char** argv)
 
 	return 0;
 }
-
+*/
