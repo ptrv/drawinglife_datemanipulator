@@ -23,16 +23,32 @@ using namespace sqlite3x;
 
 DBconnector::DBconnector(const string& databasePath)
 :
-m_databasePath(databasePath)
+m_databasePath(databasePath),
+m_dbconn(NULL)
 {
     //ctor
 }
 
 DBconnector::~DBconnector()
 {
-    //dtor
+    if(m_dbconn) {delete m_dbconn; m_dbconn=NULL;}
 }
 
+void DBconnector::setupDbConnection()
+{
+	try {
+		m_dbconn = new sqlite3_connection(m_databasePath.c_str());
+	}
+	CATCHDBERRORS
+}
+
+void DBconnector::closeDbConnection()
+{
+	try {
+		m_dbconn->close();
+	}
+	CATCHDBERRORS
+}
 
 bool DBconnector::getGpsPoints(vector<GpsPoint>& gpsPoints, string username)
 {
@@ -48,9 +64,9 @@ bool DBconnector::getGpsPoints(vector<GpsPoint>& gpsPoints, string username)
 
     try
     {
-        sqlite3_connection con(m_databasePath.c_str());
+//        sqlite3_connection con(m_databasePath.c_str());
 
-        sqlite3_command cmd(con, query.c_str());
+        sqlite3_command cmd(*m_dbconn, query.c_str());
 		sqlite3_reader reader=cmd.executereader();
 
 		while(reader.read())
@@ -65,7 +81,7 @@ bool DBconnector::getGpsPoints(vector<GpsPoint>& gpsPoints, string username)
 
             gpsPoints.push_back(gpsPoint);
 		}
-        con.close();
+//        con.close();
         result = true;
     }
     CATCHDBERRORS
@@ -77,9 +93,9 @@ bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint>& gpsPoints)
     bool result = false;
     try
     {
-        sqlite3_connection con(m_databasePath.c_str());
+//        sqlite3_connection con(m_databasePath.c_str());
 
-        sqlite3_transaction trans(con);
+        sqlite3_transaction trans(*m_dbconn);
         {
             for(unsigned int i = 0; i < gpsPoints.size(); ++i)
             {
@@ -92,12 +108,12 @@ bool DBconnector::setGpsPointsTimestamp(vector<GpsPoint>& gpsPoints)
                 query += "' WHERE gpsdataid = '";
 				query += ss.str();
                 query += "';";
-                sqlite3_command cmd(con, query.c_str());
+                sqlite3_command cmd(*m_dbconn, query.c_str());
                 cmd.executenonquery();
             }
         }
         trans.commit();
-        con.close();
+//        con.close();
         result = true;
     }
     CATCHDBERRORS
