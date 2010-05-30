@@ -5,6 +5,8 @@
 #ifndef _GPSPOINT_H_
 #define _GPSPOINT_H_
 
+#include <iostream>
+
 /**
  * \brief Holds one gps point with timestamp.
  *
